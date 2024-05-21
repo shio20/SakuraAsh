@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Love You, Ash.</title>
+  <style>
+    body {
+      position: relative;
+      background-color: #ffd1dc; /* Light pink background */
+      color: #ff69b4; /* Pink text color */
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 48px;
+      text-align: center;
+      overflow: hidden;
+      position: relative; /* Ensure text is above the background */
+      z-index: 1; /* Ensure text is above the background */
+      margin-top: 50px; /* Add margin to the top */
+      /* Pink glow effect */
+      text-shadow: 0 0 5px rgba(255, 105, 180, 0.5); /* Pink shadow with 50% opacity */
+      /* Typing animation */
+      overflow: hidden; /* Ensure text is not visible initially */
+      white-space: nowrap; /* Display text in a single line */
+      width: 0; /* Initially set width to 0 */
+      animation: typing 3s steps(30) forwards; /* Typing animation */
+    }
+
+    .typing::after {
+      content: '|';
+      animation: blink 0.7s infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 480px }
+    }
+
+    @keyframes blink {
+      to { opacity: 0 }
+    }
+
+    .rose {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(180deg); /* Rotate the rose */
+    }
+
+    .rose:before {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-color: #ff0000; /* Red rose color */
+      border-radius: 50%;
+      transform: rotate(45deg);
+      border: 3px solid #ffd1dc; /* Light pink border */
+      top: -20px;
+      left: -20px;
+      z-index: -1; /* Behind the text */
+    }
+
+    .stem {
+      position: absolute;
+      width: 5px;
+      height: 100px;
+      background-color: #008000; /* Green stem color */
+      left: 50%;
+      bottom: 10px;
+      transform: translateX(-50%);
+      z-index: -1; /* Behind the text */
+    }
+
+    .sakura-petal {
+      position: absolute;
+      width: 10px;
+      height: 20px;
+      background-color: #ff69b4; /* Pink sakura color */
+      border-radius: 50%;
+      opacity: 0.5;
+      animation: sakura 5s infinite;
+    }
+
+    @keyframes sakura {
+      0% {
+        transform: translateY(-100px) rotate(0deg) scale(0.8);
+      }
+      50% {
+        transform: translateY(0px) rotate(180deg) scale(1);
+      }
+      100% {
+        transform: translateY(-100px) rotate(360deg) scale(0.8);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="typing">I love you, Ash.</h1>
+
+  <div class="rose">
+    <div class="stem"></div>
+  </div>
+
+  <!-- Generate sakura petals randomly -->
+  <script>
+    const container = document.body;
+    const numPetals = 100;
+
+    for (let i = 0; i < numPetals; i++) {
+      const petal = document.createElement('div');
+      petal.classList.add('sakura-petal');
+      petal.style.top = Math.random() * 100 + 'vh';
+      petal.style.left = Math.random() * 100 + 'vw';
+      const delay = Math.random() * 5;
+      petal.style.animationDelay = delay + 's';
+      container.appendChild(petal);
+    }
+  </script>
+</body>
+</html>
